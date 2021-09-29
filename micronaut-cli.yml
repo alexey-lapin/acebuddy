@@ -1,0 +1,6 @@
+applicationType: cli
+defaultPackage: acebuddy
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle_kotlin
+features: [app-name, graalvm, gradle, java, junit, logback, picocli, picocli-java-application, picocli-junit, readme, shade, yaml]
