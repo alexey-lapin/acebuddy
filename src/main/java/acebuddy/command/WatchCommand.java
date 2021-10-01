@@ -1,7 +1,7 @@
 package acebuddy.command;
 
 import acebuddy.service.StreamUriBuilder;
-import io.micronaut.http.uri.UriBuilder;
+import io.micronaut.core.annotation.ReflectiveAccess;
 import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +11,7 @@ import picocli.CommandLine.Parameters;
 import java.net.URI;
 import java.util.concurrent.Callable;
 
+@ReflectiveAccess
 @Command(name = "watch")
 public class WatchCommand implements Callable<Integer> {
 
@@ -22,12 +23,9 @@ public class WatchCommand implements Callable<Integer> {
     @Parameters
     private String aceStreamId;
 
-        // http://localhost:6878/ace/getstream?id=
     @Override
     public Integer call() throws Exception {
         log.info(aceStreamId);
-//        URI build = UriBuilder.of(aceStreamId).build();
-//        String id = build.getAuthority();
         URI uri = streamUriBuilder.build(aceStreamId);
         new ProcessBuilder("vlc.exe", uri.toString()).start();
         return 0;
