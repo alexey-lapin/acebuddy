@@ -18,7 +18,7 @@ public class WatchCommand implements Callable<Integer> {
     private static final Logger log = LoggerFactory.getLogger(WatchCommand.class);
 
     @Inject
-    private StreamUriBuilder streamUriBuilder;
+    StreamUriBuilder streamUriBuilder1;
 
     @Parameters
     private String aceStreamId;
@@ -26,7 +26,7 @@ public class WatchCommand implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         log.info(aceStreamId);
-        URI uri = streamUriBuilder.build(aceStreamId);
+        URI uri = streamUriBuilder1.build(aceStreamId);
         new ProcessBuilder("vlc.exe", uri.toString()).start();
         return 0;
     }
