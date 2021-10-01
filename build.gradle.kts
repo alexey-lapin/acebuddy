@@ -3,9 +3,6 @@ plugins {
     id("io.micronaut.application") version "2.0.6"
 }
 
-version = "0.1"
-group = "acebuddy"
-
 repositories {
     mavenCentral()
 }
